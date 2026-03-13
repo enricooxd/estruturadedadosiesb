@@ -65,7 +65,5 @@ float calcular_imc(float altura, float peso){
     } else if(peso < 0 || altura < 0){
         printf("peso/altura invalido");
     }
-    }
-    
 */
 
