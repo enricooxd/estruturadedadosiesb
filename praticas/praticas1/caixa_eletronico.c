@@ -42,6 +42,5 @@ int main(){
         printf("Voce sacou um total de %d reais.\n", notas200 * 200 + notas100 * 100 + notas50 * 50 + notas20 * 20 + notas10 * 10 + notas5 * 5 + notas2 * 2);
     }   
 
-
     return 0;
 }
