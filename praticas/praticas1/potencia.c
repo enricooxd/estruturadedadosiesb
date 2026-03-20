@@ -1,13 +1,12 @@
-#include <stdio.h>  
-
-int main(){
-
 /*
 Ler uma base e um expoente inteiro positivo e calcular a 
 potência da base elevada ao expoente sem usar funções prontas.
 */
 
-#include <stdio.h>
+
+#include <stdio.h>  
+
+int main(){
 
 int calcular_potencia(int base, int expoente){
 
@@ -41,9 +40,11 @@ int calcular_potencia(int base, int expoente){
     r = calcular_potencia(7, 1);
     printf("7^1 = %d => %i\n", r, r == 7);
 
+    r = calcular_potencia(2, -2);
+    printf("2^-2 (expoente negativo) => %i\n", r == 0);
+
     return 0;
 }
-
 /*
 int base;
 int expoente;
