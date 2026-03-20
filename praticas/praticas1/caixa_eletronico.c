@@ -6,52 +6,111 @@ cédulas de 200, 100, 50, 20, 10, 5 e 2,
 utilizando a menor quantidade possível de notas. 
 O valor máximo permitido para saque é 1000.
 */
+/*
+Ler o valor de um saque e calcular a quantidade de notas necessárias nas 
+cédulas de 200, 100, 50, 20, 10, 5 e 2,
+utilizando a menor quantidade possível de notas. 
+O valor máximo permitido para saque é 1000.
+O saque só pode ser feito com valores que sejam possíveis de serem pagos com as notas disponíveis.
+*/
+
 #include <stdio.h>
 
-void calcular_notas(int valor, int *n200, int *n100, int *n50, int *n20, int *n10, int *n5, int *n2){
+struct Notas {
+    int n200;
+    int n100;
+    int n50;
+    int n20;
+    int n10;
+    int n5;
+    int n2;
+    int valido;
+};
 
-    if (valor <= 0 || valor > 1000){
-        *n200 = *n100 = *n50 = *n20 = *n10 = *n5 = *n2 = 0;
-        return;
+struct Notas calcular_notas(int valor) {
+    struct Notas resultado;
+    
+    resultado.n200 = 0;
+    resultado.n100 = 0;
+    resultado.n50 = 0;
+    resultado.n20 = 0;
+    resultado.n10 = 0;
+    resultado.n5 = 0;
+    resultado.n2 = 0;
+    resultado.valido = 1;
+    
+    if (valor <= 0 || valor > 1000) {
+        resultado.valido = 0;
+        return resultado;
     }
-
-    *n200 = valor / 200;
-    valor %= 200;
-
-    *n100 = valor / 100;
-    valor %= 100;
-
-    *n50 = valor / 50;
-    valor %= 50;
-
-    *n20 = valor / 20;
-    valor %= 20;
-
-    *n10 = valor / 10;
-    valor %= 10;
-
-    *n5 = valor / 5;
-    valor %= 5;
-
-    *n2 = valor / 2;
+    
+    int resto = valor;
+    
+    resultado.n200 = resto / 200;
+    resto %= 200;
+    
+    resultado.n100 = resto / 100;
+    resto %= 100;
+    
+    resultado.n50 = resto / 50;
+    resto %= 50;
+    
+    resultado.n20 = resto / 20;
+    resto %= 20;
+    
+    resultado.n10 = resto / 10;
+    resto %= 10;
+    
+    resultado.n5 = resto / 5;
+    resto %= 5;
+    
+    resultado.n2 = resto / 2;
+    resto %= 2;
+    
+    if (resto != 0) {
+        resultado.valido = 0;
+        resultado.n200 = 0;
+        resultado.n100 = 0;
+        resultado.n50 = 0;
+        resultado.n20 = 0;
+        resultado.n10 = 0;
+        resultado.n5 = 0;
+        resultado.n2 = 0;
+    }
+    
+    return resultado;
 }
 
-int main(){
+void testar_saque(int valor) {
+    struct Notas resultado = calcular_notas(valor);
+    
+    printf("Saque de R$ %d: ", valor);
+    
+    if (resultado.valido) {
+        printf("Valido (1) - Notas: ");
+        if (resultado.n200 > 0) printf("%dx200 ", resultado.n200);
+        if (resultado.n100 > 0) printf("%dx100 ", resultado.n100);
+        if (resultado.n50 > 0) printf("%dx50 ", resultado.n50);
+        if (resultado.n20 > 0) printf("%dx20 ", resultado.n20);
+        if (resultado.n10 > 0) printf("%dx10 ", resultado.n10);
+        if (resultado.n5 > 0) printf("%dx5 ", resultado.n5);
+        if (resultado.n2 > 0) printf("%dx2 ", resultado.n2);
+        printf("\n");
+    } else {
+        printf("Invalido (0)\n");
+    }
+}
 
-    int n200, n100, n50, n20, n10, n5, n2;
-
-    calcular_notas(376, &n200, &n100, &n50, &n20, &n10, &n5, &n2);
-    printf("376 -> %i\n", n200==1 && n100==1 && n50==1 && n20==1 && n10==0 && n5==1 && n2==0);
-
-    calcular_notas(400, &n200, &n100, &n50, &n20, &n10, &n5, &n2);
-    printf("400 -> %i\n", n200==2 && n100==0 && n50==0 && n20==0 && n10==0 && n5==0 && n2==0);
-
-    calcular_notas(75, &n200, &n100, &n50, &n20, &n10, &n5, &n2);
-    printf("75 -> %i\n", n200==0 && n100==0 && n50==1 && n20==1 && n10==0 && n5==1 && n2==0);
-
-    calcular_notas(1200, &n200, &n100, &n50, &n20, &n10, &n5, &n2);
-    printf("valor invalido -> %i\n", n200==0 && n100==0 && n50==0 && n20==0 && n10==0 && n5==0 && n2==0);
-
+int main() {
+    testar_saque(376);
+    testar_saque(400);
+    testar_saque(75);
+    testar_saque(1200);
+    testar_saque(1);
+    testar_saque(3);
+    testar_saque(7);
+    testar_saque(100);
+    
     return 0;
 }
 

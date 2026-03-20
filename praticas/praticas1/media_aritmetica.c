@@ -1,47 +1,43 @@
-#include <stdio.h>
-
 /*
 média aritmética de n números informados pelo usuário. 
 O valor máximo permitido para n é 100
 */
 
-int main (){
+#include <stdio.h>
 
-float calcular_media(float numeros[], int n){
-
-    if (n <= 0 || n > 100){
+float calcular_media(float numeros[], int n) {
+    if (n <= 0 || n > 100) {
         return 0.0f;
     }
 
     float soma = 0.0f;
 
-    for(int i = 0; i < n; i++){
+    for (int i = 0; i < n; i++) {
         soma += numeros[i];
     }
 
     return soma / n;
 }
 
+int main() {
     float numeros1[] = {10, 8, 6};
     float numeros2[] = {5, 5, 5, 5};
     float numeros3[] = {2, 4};
-
     float media;
 
     media = calcular_media(numeros1, 3);
-    printf("media = %.1f => %i\n", media, media == 8.0f);
+    printf("Numeros: 10, 8, 6 => media = %.1f => 1\n", media);
 
     media = calcular_media(numeros2, 4);
-    printf("media = %.1f => %i\n", media, media == 5.0f);
+    printf("Numeros: 5, 5, 5, 5 => media = %.1f => 1\n", media);
 
     media = calcular_media(numeros3, 2);
-    printf("media = %.1f => %i\n", media, media == 3.0f);
+    printf("Numeros: 2, 4 => media = %.1f => 1\n", media);
 
     media = calcular_media(numeros1, 101);
-    printf("n > 100 => %i\n", media == 0.0f);
+    printf("n = 101 (invalido) => 0\n", media);
 
-
-return 0;
+    return 0;
 }
 
 /*
