@@ -63,4 +63,5 @@ int main() {
     printf("Tempo com um laco: %f segundos\n", tempo2);
 
     return 0;
+    
 }
