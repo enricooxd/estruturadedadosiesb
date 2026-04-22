@@ -3,16 +3,6 @@ Ler um vetor com 100 números e procurar um valor informado pelo usuário utiliz
 Indicar a complexidade assintótica do algorítimo analisando o melhor caso e o pior caso.
 */
 
-/*
-Ler um vetor com 100 números e procurar um valor informado pelo usuário utilizando a busca sequencial.
-Indicar a complexidade assintótica do algorítimo analisando o melhor caso e o pior caso.
-*/
-
-/*
-Ler um vetor com 100 números e procurar um valor informado pelo usuário utilizando a busca sequencial.
-Indicar a complexidade assintótica do algorítimo analisando o melhor caso e o pior caso.
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
