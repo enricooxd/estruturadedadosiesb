@@ -8,11 +8,6 @@ Calcular o tempo de execução para cada abordagem. Indicar a complexidade assin
 
 #define TAM 10
 
-#include <stdio.h>
-#include <time.h>
-
-#define TAM 10
-
 int main() {
     int matriz[TAM][TAM];
     clock_t inicio, fim;
