@@ -72,4 +72,19 @@ void lista_exibir(fila_t *f) {
     no_t *atual = f->inicio;
     while (atual != NULL) {
         printf("%d", atual->valor);
-        if (atual->proximo != NULL) printf(" ->
+        if (atual->proximo != NULL) printf(" -> ");
+        atual = atual->proximo;
+    }
+    printf("\n");
+}
+
+int fila_esta_vazia(fila_t *f) {
+    return f->inicio == NULL;
+}
+
+void fila_destruir(fila_t *f) {
+    while (!fila_esta_vazia(f)) {
+        fila_desenfileirar(f);
+    }
+    free(f);
+}
